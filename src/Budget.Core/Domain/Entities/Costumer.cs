@@ -1,7 +1,14 @@
+using Budget.Core.Domain.Utils;
+
 namespace Budget.Core.Domain.Entities;
 
 public class Costumer : BaseEntity
 {
+    private const int MinNameLength = 2;
+    private const int MaxNameLength = 250;
+    private const int MinDescriptionLength = 2;
+    private const int MaxDescriptionLength = 250;
+    
     public string Name { get; private set; }
     public string Phone { get; private set; }
 
@@ -11,20 +18,10 @@ public class Costumer : BaseEntity
         string name,
         string phone
     ){
-        if(string.IsNullOrEmpty(name))
-        {
-            throw new Exception("Invalid name");
-        }
-
-        if(string.IsNullOrEmpty(phone))
-        {
-            throw new Exception("Invalid phone");
-        }
-
         return new Costumer
         {
-            Name = name,
-            Phone = phone
+            Name = name.ValidateString(MinNameLength, MaxNameLength),
+            Phone = phone.ValidateString(MinDescriptionLength, MaxDescriptionLength)
         };
     }
 }
