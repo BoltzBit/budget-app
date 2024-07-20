@@ -19,4 +19,14 @@ public static class Validation
 
         return value;
     }
+
+    public static int ValidateInt(this int value)
+    {
+        if(value <= 0)
+        {
+            throw new DomainException($"Value is not permited to be less then zero.");
+        }
+
+        return value;
+    }
 }

@@ -1,3 +1,5 @@
+using Budget.Core.Domain.Utils;
+
 namespace Budget.Core.Domain.Entities;
 
 public class Provider : BaseEntity
@@ -16,21 +18,6 @@ public class Provider : BaseEntity
         int serviceType
     )
     {
-        if(string.IsNullOrEmpty(name))
-        {
-            throw new Exception("Invalid name");
-        }
-
-        if(string.IsNullOrEmpty(phone))
-        {
-            throw new Exception("Invalid phone");
-        }
-
-        if(string.IsNullOrEmpty(description))
-        {
-            throw new Exception("Invalid Description");
-        }
-
         if(serviceType <= 0)
         {
             throw new Exception("Invalid service type");
@@ -38,10 +25,13 @@ public class Provider : BaseEntity
 
         return new Provider
         {
-            Name = name,
-            Phone = phone,
-            Description = description,
-            ServiceType = serviceType
+            Name = name
+                .ValidateString(Constants.MinNameLength, Constants.MaxNameLength),
+            Phone = phone
+                .ValidateString(5,9),
+            Description = description
+                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
+            ServiceType = serviceType.ValidateInt()
         };
     }
 }
