@@ -1,3 +1,5 @@
+namespace Budget.Core.Domain.Entities;
+
 public abstract class BaseEntity
 {
     public Guid Id { get; protected set; }
