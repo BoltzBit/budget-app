@@ -4,12 +4,43 @@ namespace Budget.Core.Domain.Entities;
 
 public class Provider : BaseEntity
 {
-    public string Name { get; set; }
-    public string Phone { get; set; }
-    public int ServiceType { get; set; }
-    public string Description { get; set; }
+    public string Name { get; private set; }
+    public string Phone { get; private set; }
+    public int ServiceType { get; private set; }
+    public string Description { get; private set; }
 
     protected Provider(){}
+
+    public void Update(Provider providerUpdate)
+    {
+        if(Name != providerUpdate.Name)
+        {
+            Name = providerUpdate
+                .Name
+                .ValidateString(Constants.MinNameLength, Constants.MaxNameLength);
+        }
+
+        if(Phone != providerUpdate.Phone)
+        {
+            Phone = providerUpdate
+                .Phone
+                .ValidateString(0, Constants.MaxPhoneLength);
+        }
+
+        if(Description != providerUpdate.Description)
+        {
+            Description = providerUpdate
+                .Description
+                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength);
+        }
+
+        if(ServiceType != providerUpdate.ServiceType)
+        {
+            ServiceType = providerUpdate
+                .ServiceType
+                .ValidateInt();
+        }
+    }
 
     public static Provider Create(
         string name,
@@ -18,11 +49,6 @@ public class Provider : BaseEntity
         int serviceType
     )
     {
-        if(serviceType <= 0)
-        {
-            throw new Exception("Invalid service type");
-        }
-
         return new Provider
         {
             Name = name

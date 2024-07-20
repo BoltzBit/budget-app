@@ -6,4 +6,5 @@ internal static class Constants
     public const int MaxNameLength = 250;
     public const int MinDescriptionLength = 10;
     public const int MaxDescriptionLength = 2500;
+    public const int MaxPhoneLength = 12;
 }
