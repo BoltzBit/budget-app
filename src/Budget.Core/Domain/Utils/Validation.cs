@@ -29,4 +29,14 @@ public static class Validation
 
         return value;
     }
+
+    public static Guid ValidateGuid(this Guid guid)
+    {
+        if(guid == Guid.Empty)
+        {
+            throw new DomainException("Guid is invalid.");
+        }
+
+        return guid;
+    }
 }
