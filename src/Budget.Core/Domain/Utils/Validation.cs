@@ -2,6 +2,15 @@ namespace Budget.Core.Domain.Utils;
 
 public static class Validation
 {
+    public static decimal ValidateDecimal(this decimal value)
+    {
+        if(value <= 0) 
+        {
+            throw new DomainException($"Value is not permited to be less then zero.");
+        }
+        return value;
+    }
+
     public static string ValidateString(
         this string value, 
         int minLength, 
