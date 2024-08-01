@@ -6,7 +6,7 @@ public static class Validation
     {
         if(value <= 0) 
         {
-            throw new DomainException($"Value is not permited to be less then");
+            throw new DomainException($"Value is not permited to be less then zero.");
         }
         return value;
     }
