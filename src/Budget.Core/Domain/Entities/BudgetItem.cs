@@ -14,21 +14,21 @@ public class BudgetItem : BaseEntity
     public void Update(BudgetItem budgetItemUpdate)
     {
 
-        if(Description != budgetItemUpdate.Description)
+        if (Description != budgetItemUpdate.Description)
         {
             Description = budgetItemUpdate
                 .Description
                 .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength);
         }
 
-        if(Type != budgetItemUpdate.Type)
+        if (Type != budgetItemUpdate.Type)
         {
             Type = budgetItemUpdate
                 .Type
                 .ValidateInt();
         }
 
-        if(Price != budgetItemUpdate.Price)
+        if (Price != budgetItemUpdate.Price)
         {
             Price = budgetItemUpdate
                 .Price
