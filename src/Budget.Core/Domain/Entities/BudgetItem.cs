@@ -37,10 +37,10 @@ public class BudgetItem : BaseEntity
     }
 
     public static BudgetItem Create(
-    Guid budgetId, 
-    string description,
-    int type,
-    decimal price
+        Guid budgetId, 
+        string description,
+        int type,
+        decimal price
     )
     {
         return new BudgetItem

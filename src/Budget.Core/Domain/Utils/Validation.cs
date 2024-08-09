@@ -4,7 +4,7 @@ public static class Validation
 {
     public static decimal ValidateDecimal(this decimal value)
     {
-        if(value <= 0) 
+        if(value < 0) 
         {
             throw new DomainException($"Value is not permited to be less then zero.");
         }
