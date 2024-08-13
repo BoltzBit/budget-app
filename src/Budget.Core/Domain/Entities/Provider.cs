@@ -6,7 +6,6 @@ public class Provider : BaseEntity
 {
     public string Name { get; private set; }
     public string Phone { get; private set; }
-    public int ServiceType { get; private set; }
     public string Description { get; private set; }
 
     protected Provider(){}
@@ -33,20 +32,12 @@ public class Provider : BaseEntity
                 .Description
                 .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength);
         }
-
-        if(ServiceType != providerUpdate.ServiceType)
-        {
-            ServiceType = providerUpdate
-                .ServiceType
-                .ValidateInt();
-        }
     }
 
     public static Provider Create(
         string name,
         string phone,
-        string description,
-        int serviceType
+        string description
     )
     {
         return new Provider
@@ -56,8 +47,7 @@ public class Provider : BaseEntity
             Phone = phone
                 .ValidateString(5,9),
             Description = description
-                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
-            ServiceType = serviceType.ValidateInt()
+                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength)
         };
     }
 }
