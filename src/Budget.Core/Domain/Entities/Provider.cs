@@ -8,6 +8,8 @@ public class Provider : BaseEntity
     public string Phone { get; private set; }
     public string Description { get; private set; }
 
+    public IReadOnlyCollection<Budget> Budgets { get; private set; }
+
     protected Provider(){}
 
     public void Update(Provider providerUpdate)

@@ -14,6 +14,7 @@ public class Budget : BaseEntity
 
     public Costumer Costumer { get; private set; }
     public Provider Provider { get; private set; }
+    public IReadOnlyCollection<BudgetItem> BudgetItems { get; private set; } 
 
     protected Budget() { }
 

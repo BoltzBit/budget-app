@@ -9,6 +9,8 @@ public class BudgetItem : BaseEntity
     public string Description { get; private set; }
     public BudgetItemType Type {  get; private set; }
     public decimal Price { get; private set; }
+
+    public Budget Budget { get; private set; }
     
     protected BudgetItem() {}
 

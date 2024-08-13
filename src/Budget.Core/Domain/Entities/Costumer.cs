@@ -7,6 +7,8 @@ public class Costumer : BaseEntity
     public string Name { get; private set; }
     public string Phone { get; private set; }
 
+    public IReadOnlyCollection<Budget> Budgets { get; private set; }
+
     protected Costumer(){}
 
     public void Update(Costumer costumerUpdate)
