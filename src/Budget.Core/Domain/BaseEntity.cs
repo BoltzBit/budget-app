@@ -1,4 +1,4 @@
-namespace Budget.Core.Domain.Entities;
+namespace Budget.Core.Domain;
 
 public abstract class BaseEntity
 {
