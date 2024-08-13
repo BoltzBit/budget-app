@@ -48,4 +48,15 @@ public static class Validation
 
         return guid;
     }
+
+    //TODO verificar validacao de Enum
+    public static TEnum ValidateEnum<TEnum>(this TEnum @enum)
+    {
+        if(!Enum.IsDefined(typeof(TEnum), @enum))
+        {
+            throw new DomainException("This enum is not valid!");
+        }
+
+        return @enum;
+    }
 }
