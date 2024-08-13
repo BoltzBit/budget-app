@@ -1,7 +1,7 @@
 using Budget.Core.Domain.Entities;
 using Budget.Core.Domain.Utils;
 
-namespace Budget.Domain.Entities;
+namespace Budget.Core.Domain.Entities;
 
 public class ServiceType : BaseEntity
 {
