@@ -1,4 +1,5 @@
-﻿using Budget.Core.Domain.Utils;
+﻿using Budget.Core.Domain.Enuns;
+using Budget.Core.Domain.Utils;
 
 namespace Budget.Core.Domain.Entities;
 
@@ -6,7 +7,7 @@ public class BudgetItem : BaseEntity
 {
     public Guid BudgetId { get; private set; }
     public string Description { get; private set; }
-    public int Type {  get; private set; }
+    public BudgetItemType Type {  get; private set; }
     public decimal Price { get; private set; }
     
     protected BudgetItem() {}
@@ -23,9 +24,7 @@ public class BudgetItem : BaseEntity
 
         if (Type != budgetItemUpdate.Type)
         {
-            Type = budgetItemUpdate
-                .Type
-                .ValidateInt();
+            Type = budgetItemUpdate.Type;
         }
 
         if (Price != budgetItemUpdate.Price)
@@ -39,7 +38,7 @@ public class BudgetItem : BaseEntity
     public static BudgetItem Create(
         Guid budgetId, 
         string description,
-        int type,
+        BudgetItemType type,
         decimal price
     )
     {
@@ -47,7 +46,7 @@ public class BudgetItem : BaseEntity
         {
             BudgetId = budgetId.ValidateGuid(),
             Description = description.ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
-            Type = type.ValidateInt(),
+            Type = type,
             Price = price
         };
     }
