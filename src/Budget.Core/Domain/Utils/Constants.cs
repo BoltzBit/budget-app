@@ -1,6 +1,6 @@
 namespace Budget.Core.Domain.Utils;
 
-internal static class Constants
+public static class Constants
 {
     public const int MinNameLength = 2;
     public const int MaxNameLength = 250;
