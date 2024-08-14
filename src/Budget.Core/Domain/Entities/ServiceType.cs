@@ -8,7 +8,7 @@ public class ServiceType : BaseEntity
     public string Name { get; private set; }
     public string Description { get; private set; }
 
-    public IReadOnlyCollection<Provider> Providers { get; private set; }
+    public Provider Provider { get; private set; }
 
     protected ServiceType(){}
 

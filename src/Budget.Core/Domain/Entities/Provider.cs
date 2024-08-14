@@ -9,6 +9,7 @@ public class Provider : BaseEntity
     public string Description { get; private set; }
 
     public IReadOnlyCollection<Budget> Budgets { get; private set; }
+    public IReadOnlyCollection<ServiceType> Services { get; private set; }
 
     protected Provider(){}
 
