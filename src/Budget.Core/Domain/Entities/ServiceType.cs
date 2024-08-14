@@ -4,7 +4,7 @@ namespace Budget.Core.Domain.Entities;
 
 public class ServiceType : BaseEntity
 {
-    public int ProviderId { get; private set; }
+    public Guid ProviderId { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
 
@@ -16,35 +16,46 @@ public class ServiceType : BaseEntity
     {
         if(serviceType.ProviderId != ProviderId)
         {
-            ProviderId = serviceType.ProviderId;
+            ProviderId = serviceType
+                .ProviderId
+                .ValidateGuid();
         }
 
         if(serviceType.Name != Name)
         {
             Name = serviceType
                 .Name
-                .ValidateString(2, 100);
+                .ValidateString(
+                    Constants.MinNameLength, 
+                    Constants.MaxNameLength);
         }
 
         if(serviceType.Description != Description)
         {
             Description = serviceType
                 .Description
-                .ValidateString(2, 2000);
+                .ValidateString(
+                    Constants.MinDescriptionLength,
+                    Constants.MaxDescriptionLength);
         }
     }
 
     public ServiceType Create(
-        int providerId,
+        Guid providerId,
         string name,
         string description
     )
     {
         return new ServiceType
         {
-            ProviderId = providerId.ValidateInt(),
-            Name = name.ValidateString(2, 100),
-            Description = description.ValidateString(2, 2000)
+            ProviderId = providerId
+                .ValidateGuid(),
+            Name = name.ValidateString(
+                Constants.MinNameLength, 
+                Constants.MaxNameLength),
+            Description = description.ValidateString(
+                Constants.MinDescriptionLength,
+                Constants.MaxDescriptionLength)
         };
     }
 }
