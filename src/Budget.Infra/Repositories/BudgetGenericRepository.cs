@@ -30,13 +30,15 @@ public abstract class BudgetGenericRepository<T> :
             .FirstOrDefaultAsync(e => e.Id == id);
     }
 
-    public async Task InsertAsync(T entity)
+    public async Task<Guid> InsertAsync(T entity)
     {
         await _context
             .Set<T>()
             .AddAsync(entity);
 
         await _context.SaveChangesAsync();
+
+        return entity.Id;
     }
 
     public async Task UpdateAsync(T entity)

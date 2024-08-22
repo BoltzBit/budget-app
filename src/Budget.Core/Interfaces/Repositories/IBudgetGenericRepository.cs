@@ -6,7 +6,7 @@ public interface IBudgetGenericRepository<T> where T : BaseEntity
 {
     IQueryable<T> GetAll();
     Task<T?> GetByIdAsync(Guid id);
-    Task InsertAsync(T entity);
+    Task<Guid> InsertAsync(T entity);
     Task UpdateAsync(T entity);
     Task DeleteAsync(T entity);
 }
