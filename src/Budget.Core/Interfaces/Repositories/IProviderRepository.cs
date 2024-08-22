@@ -4,5 +4,5 @@ namespace Budget.Core.Interfaces.Repositories;
 
 public interface IProviderRepository : IBudgetGenericRepository<Provider>
 {
-    
+    Task<bool> ExistProvider(Provider provider);
 }

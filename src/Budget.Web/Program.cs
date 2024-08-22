@@ -2,6 +2,7 @@ using Budget.Web.Components;
 using Budget.Infra;
 using Budget.Core.Interfaces.Repositories;
 using Budget.Infra.Repositories;
+using Budget.Application.Features.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,15 @@ builder.Services.AddScoped<IBudgetItemRepository, BudgetItemRepository>();
 builder.Services.AddScoped<ICostumerRepository, CostumerRepository>();
 builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
+
+//Injections
+builder.Services
+    .AddMediatR(cfg => cfg
+        .RegisterServicesFromAssembly(typeof(CreateBudgetCommandHandler).Assembly));
+        
+builder.Services
+    .AddMediatR(cfg => cfg
+        .RegisterServicesFromAssembly(typeof(CreateProviderCommandHandler).Assembly));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
