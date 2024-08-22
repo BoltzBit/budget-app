@@ -1,4 +1,3 @@
-using Budget.Application.Services;
 using Budget.Core.Domain.Entities;
 using Budget.Core.Interfaces.Services;
 using MediatR;
