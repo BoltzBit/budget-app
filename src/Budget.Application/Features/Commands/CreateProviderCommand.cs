@@ -16,7 +16,7 @@ public class CreateProviderCommandHandler : IRequestHandler<CreateProviderComman
 {
     private readonly IProviderService _providerService;
 
-    public CreateProviderCommandHandler(ProviderService providerService)
+    public CreateProviderCommandHandler(IProviderService providerService)
     {
         _providerService = providerService;
     }

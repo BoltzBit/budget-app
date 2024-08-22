@@ -5,9 +5,14 @@ using Budget.Infra.Repositories;
 
 namespace Budget.Application.Services;
 
-public class ProviderService(ProviderRepository providerRepository) : IProviderService
+public class ProviderService : IProviderService
 {
-    private readonly IProviderRepository _providerRepository = providerRepository;
+    private readonly IProviderRepository _providerRepository;
+
+    public ProviderService(IProviderRepository providerRepository)
+    {
+        _providerRepository = providerRepository;
+    }
 
     public async Task<Guid> InsertAsync(Provider provider)
     {
