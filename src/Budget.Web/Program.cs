@@ -1,5 +1,7 @@
 using Budget.Web.Components;
 using Budget.Infra;
+using Budget.Core.Interfaces.Repositories;
+using Budget.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,12 @@ else
     throw new Exception("Connection String not found");
 }
 
+//Repositories
+builder.Services.AddScoped<IBudgetRepository, BudgetRepository>();
+builder.Services.AddScoped<IBudgetItemRepository, BudgetItemRepository>();
+builder.Services.AddScoped<ICostumerRepository, CostumerRepository>();
+builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
+builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
