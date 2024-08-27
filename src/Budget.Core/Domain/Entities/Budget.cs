@@ -53,6 +53,7 @@ public class Budget : BaseEntity
         }
 
         IsAccepted = budget.IsAccepted;
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public static Budget Create(
@@ -67,7 +68,8 @@ public class Budget : BaseEntity
             CostumerId = costumerId.ValidateGuid(),
             ProviderId = providerId.ValidateGuid(),
             Deadline = deadline,
-            Type = type
+            Type = type,
+            CreatedAt = DateTime.UtcNow
         };
     }
 }

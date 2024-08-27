@@ -1,7 +1,6 @@
 using Budget.Core.Domain.Entities;
 using Budget.Core.Interfaces.Services;
 using Budget.Core.Interfaces.Repositories;
-using Budget.Infra.Repositories;
 
 namespace Budget.Application.Services;
 

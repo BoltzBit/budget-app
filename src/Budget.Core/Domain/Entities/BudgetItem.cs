@@ -35,6 +35,7 @@ public class BudgetItem : BaseEntity
                 .Price
                 .ValidateDecimal();
         }
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public static BudgetItem Create(
@@ -49,7 +50,8 @@ public class BudgetItem : BaseEntity
             BudgetId = budgetId.ValidateGuid(),
             Description = description.ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
             Type = type,
-            Price = price
+            Price = price,
+            CreatedAt = DateTime.UtcNow
         };
     }
 }

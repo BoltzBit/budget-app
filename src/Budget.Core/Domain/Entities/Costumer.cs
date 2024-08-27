@@ -26,6 +26,7 @@ public class Costumer : BaseEntity
                 .Phone
                 .ValidateString(0, Constants.MaxPhoneLength);
         }
+        UpdatedAt = DateTime.UtcNow;
     }
     public static Costumer Create(
         string name,
@@ -36,7 +37,8 @@ public class Costumer : BaseEntity
             Name = name
                 .ValidateString(Constants.MinNameLength, Constants.MaxNameLength),
             Phone = phone
-                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength)
+                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
+            CreatedAt = DateTime.UtcNow
         };
     }
 }
