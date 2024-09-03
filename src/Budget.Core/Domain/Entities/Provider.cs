@@ -35,7 +35,6 @@ public class Provider : BaseEntity
                 .Description
                 .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength);
         }
-        UpdatedAt = DateTime.UtcNow;
     }
 
     public static Provider Create(
@@ -51,8 +50,7 @@ public class Provider : BaseEntity
             Phone = phone
                 .ValidateString(5,12),
             Description = description
-                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength),
-            CreatedAt = DateTime.UtcNow
+                .ValidateString(Constants.MinDescriptionLength, Constants.MaxDescriptionLength)
         };
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Budget.Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Budget.Infra;
 
@@ -17,7 +18,21 @@ public class BudgetDbContext : DbContext
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
+        foreach(var entry in ChangeTracker.Entries<BaseEntity>())
+        {
+            if(entry.State is EntityState.Added)
+            {
+                entry.Entity.SetCreatedAt(DateTime.UtcNow);
+            }
+
+            if(entry.State is EntityState.Modified)
+            {
+                entry.Entity.SetUpdatedAt(DateTime.UtcNow);
+            }
+        }
+
         int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
         return result;
     }
 

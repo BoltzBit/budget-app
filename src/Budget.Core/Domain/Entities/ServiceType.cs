@@ -38,8 +38,6 @@ public class ServiceType : BaseEntity
                     Constants.MinDescriptionLength,
                     Constants.MaxDescriptionLength);
         }
-
-        UpdatedAt = DateTime.UtcNow;
     }
 
     public ServiceType Create(
@@ -57,8 +55,7 @@ public class ServiceType : BaseEntity
                 Constants.MaxNameLength),
             Description = description.ValidateString(
                 Constants.MinDescriptionLength,
-                Constants.MaxDescriptionLength),
-            CreatedAt = DateTime.UtcNow
+                Constants.MaxDescriptionLength)
         };
     }
 }

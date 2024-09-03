@@ -10,6 +10,16 @@ public abstract class BaseEntity
         Id = Guid.NewGuid();
     }
 
+    public void SetCreatedAt(DateTime date)
+    {
+        CreatedAt = date;
+    }
+
+    public void SetUpdatedAt(DateTime date)
+    {
+        UpdatedAt = date;
+    }
+
     public override bool Equals(object? obj)
     {
         var compareTo = obj as BaseEntity;
